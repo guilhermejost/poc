@@ -3,10 +3,9 @@ pipeline {
 
 	//Configure the following environment variables before executing the Jenkins Job	
 	environment {
-		IntegrationFlowID = "IntegrationFlow1"
+		IntegrationFlowID = "HCI_LogonAcheDocsOAuth_Icons4"
 		CPIHost = "${env.CPI_HOST}"
-		CPIOAuthHost = "${env.CPI_OAUTH_HOST}"
-		CPIOAuthCredentials = "${env.CPI_OAUTH_CRED}"	
+		CPICredentials = "${env.CPI_OAUTH_CRED}"	
 		GITRepositoryURL  = "${env.GIT_REPOSITORY_URL}"
 		GITCredentials = "${env.GIT_CRED}"
 		GITBranch = "${env.GIT_BRANCH_NAME}"
@@ -36,9 +35,11 @@ pipeline {
 					])
 					
 					//get token
-					println("Request token");
+					
 					def token;
-					try{
+					token = "Basic " + env.CPICredentials
+					println(token);
+					/*try{
 					def getTokenResp = httpRequest acceptType: 'APPLICATION_JSON', 
 						authentication: env.CPIOAuthCredentials, 
 						contentType: 'APPLICATION_JSON', 
@@ -50,7 +51,7 @@ pipeline {
 					token = "Bearer " + jsonObjToken.access_token
 				   	} catch (Exception e) {
 						error("Requesting the oauth token for Cloud Integration failed:\n${e}")
-					}
+					}*/
 					//delete the old flow content so that only the latest content gets stored
 					dir(env.GITFolder + '/' + env.IntegrationFlowID){
 						deleteDir();
