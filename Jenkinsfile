@@ -7,7 +7,7 @@ pipeline {
 		CPIHost = "${env.CPI_HOST}"
 		CPICredentials = "${env.CPI_OAUTH_CRED}"	
 		GITRepositoryURL  = "${env.GIT_REPOSITORY_URL}"
-		GITCredentials = credentials('user and token for Git')
+		GITCredentials = "${env.GIT_CRED}"
 		GITBranch = "${env.GIT_BRANCH_NAME}"
 		GITFolder = "IntegrationContent/IntegrationArtefacts"
 		GITComment = "Integration Artefacts update from CICD pipeline"
