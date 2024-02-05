@@ -84,7 +84,7 @@ pipeline {
 						
 					dir(folder){
 						//sh 'git add .'
-						"C:\Program Files\Git\bin\git.exe" add .
+						"C:\\Program Files\\Git\\bin\\git.exe" add .
 					}
 					println("Store integration artefact in Git")
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {  
