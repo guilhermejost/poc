@@ -83,7 +83,7 @@ pipeline {
 					fileOperations([fileDeleteOperation(excludes: '', includes: tempfile)])
 						
 					dir(folder){
-						bat 'git add'
+						sh '"C:\\Program Files\\Para\\Git\\bin\\sh" add .'
 					}
 					println("Store integration artefact in Git")
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {  
