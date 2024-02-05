@@ -13,7 +13,7 @@ pipeline {
 		GITFolder = "IntegrationContent/IntegrationArtefacts"
 		GITComment = "Integration Artefacts update from CICD pipeline"
    	}
-	println("Request token");
+	
 	stages {
 		stage('download integration artefact and store it in Git') {
 			steps {
