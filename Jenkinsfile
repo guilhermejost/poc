@@ -81,7 +81,7 @@ pipeline {
 
 					//remove the zip
 					fileOperations([fileDeleteOperation(excludes: '', includes: tempfile)])
-
+					println(folder)
 					dir(folder){
 						sh 'git add .'
 					}
