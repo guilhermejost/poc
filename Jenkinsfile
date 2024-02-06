@@ -93,7 +93,7 @@ pipeline {
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {  
 						println("${GIT_AUTHOR_NAME}:${GIT_PASSWORD}")
 						 '"C:\\Program Files\\Git\\bin\\sh.exe" git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
-						('"C:\\Program Files\\Git\\bin\\sh.exe" git push https://${GIT_AUTHOR_NAME}:${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+						("C:\\Program Files\\Git\\bin\\sh.exe git push https://${GIT_AUTHOR_NAME}:${GIT_PASSWORD}@" + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
 					}				
 				}
 			}
