@@ -81,9 +81,13 @@ pipeline {
 
 					//remove the zip
 					fileOperations([fileDeleteOperation(excludes: '', includes: tempfile)])
-						
+					/*	
 					dir(folder){
 						'git add .'
+					}*/
+
+					dir(folder){
+						'"C:\\Program Files\\Git\\bin\\git.exe" add .'
 					}
 					println("Store integration artefact in Git")
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {  
