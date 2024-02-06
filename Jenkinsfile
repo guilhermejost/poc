@@ -83,12 +83,12 @@ pipeline {
 					fileOperations([fileDeleteOperation(excludes: '', includes: tempfile)])
 
 					dir(folder){
-						echo 'git add .'
+						sh 'git add .'
 					}
 					println("Store integration artefact in Git")
 					withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITCredentials ,usernameVariable: 'GIT_AUTHOR_NAME', passwordVariable: 'GIT_PASSWORD']]) {  
-						echo 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
-						echo('git push https://${GIT_AUTHOR_NAME}:${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
+						sh 'git diff-index --quiet HEAD || git commit -am ' + '\'' + env.GitComment + '\''
+						sh('git push https://${GIT_AUTHOR_NAME}:${GIT_PASSWORD}@' + env.GITRepositoryURL + ' HEAD:' + env.GITBranch)
 					}				
 				}
 			}
